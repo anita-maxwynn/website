@@ -123,15 +123,7 @@ Available for freelance projects and full-time opportunities!
       fn: () => `
 💼 Work Experience:
 ──────────────────
-Frontend Developer @ TechCorp (2023-Present)
-• Built responsive web applications using React & TypeScript
-• Improved site performance by 40% through optimization
-• Collaborated with design team on user experience improvements
 
-Junior Developer @ StartupXYZ (2022-2023)
-• Developed RESTful APIs using Node.js and Express
-• Implemented database schemas and queries
-• Participated in agile development processes
       `
     },
     resume: {
