@@ -67,7 +67,7 @@ const TerminalComponent: React.FC<TerminalComponentProps> = ({ commands, asciiAr
     const term = new Terminal({
       cursorBlink: true,
       fontSize: 14,
-      cols: 100,
+      cols: 200,
       rows: 40,
       theme: themes[currentTheme],
       scrollback: 1000,

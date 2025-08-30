@@ -5,18 +5,25 @@ import figlet from 'figlet';
 import { useEffect, useState } from 'react';
 
 const App = () => {
-  const [asciiArt, setAsciiArt] = useState<string>('KISUKE');
+  const [asciiArt, setAsciiArt] = useState<string>('Kisuke');
+  const [showSimpleView, setShowSimpleView] = useState(false); // Button visibility
+  const [currentTheme, setCurrentTheme] = useState<'dark' | 'light' | 'matrix' | 'hacker'>('dark');
 
+  const themeStyles: Record<typeof currentTheme, { text: string; border: string }> = {
+    dark: { text: 'text-green-400', border: 'border-green-400' },
+    light: { text: 'text-gray-800', border: 'border-gray-800' },
+    matrix: { text: 'text-green-400', border: 'border-green-400' },
+    hacker: { text: 'text-lime-400', border: 'border-lime-400' },
+  };
   useEffect(() => {
     const generateAscii = async () => {
       const fallback = `
- _  _  ____  ___  __  __  _  _  ____ 
-( )/ )(_  _)/ __)(  )(  )( )/ )( ___)
- )  (  _)(_ \\__ \\ )(__)(  )  (  )__) 
+ _  _   ____  ___  __  __  _  __   ____ 
+( )/ ) (_  _)/ __)(  )(  )( )/  )( ___)
+ )  (   _)(_ \\__ \\ )(__)(  )  ( )__) 
 (_)\\_)(____)(___/(______)(_)\\_)(____)
       `;
 
-      // Load custom font from public folder
       const fontName = 'Bulbhead';
       const fontUrl = `/Bulbhead.flf`;
 
@@ -24,7 +31,7 @@ const App = () => {
         .then(res => res.text())
         .then(fontData => {
           figlet.parseFont(fontName, fontData);
-          figlet.text('KISUKE', {
+          figlet.text('Kisuke', {
             font: fontName,
             horizontalLayout: 'default',
             verticalLayout: 'default',
@@ -46,6 +53,11 @@ const App = () => {
     };
 
     generateAscii();
+
+    // Show button after 1 minute (60000 ms)
+    const timer = setTimeout(() => setShowSimpleView(true), 10000);
+    return () => clearTimeout(timer);
+
   }, []);
 
   const commands1 = {
@@ -53,17 +65,14 @@ const App = () => {
       description: 'Learn about me',
       usage: 'about',
       fn: () => `
-Hi! I'm Anita MaxWynn
-Full-Stack Developer & Creative Technologist
-Passionate about building amazing web experiences and Languages
-Currently focused on React, TypeScript, Django, Django-Rest, C++,
-Celery, Redis and Competitive Programming
+Hi! I'm Sourish Chandra
+A Bachelor of Technology in Computer Science and Engineering student at IIIT Kalyani, expecting to graduate in May 2026.
+Passionate about Backend Development, Cryptography, and Algorithms.
+Currently maintaining a CGPA of 8.48.
 
 Type 'skills' to see my technical expertise!
       `,
-      funco: () => {
-        console.log('About command executed at:', new Date().toISOString());
-      }
+      funco: () => console.log('About command executed at:', new Date().toISOString())
     },
     skills: {
       description: 'View my technical skills',
@@ -71,11 +80,12 @@ Type 'skills' to see my technical expertise!
       fn: () => `
 Technical Skills:
 ================
-Frontend:  React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS
-Backend:   Python, Django, Flask, FastAPI
-Database:  MongoDB, PostgreSQL, MySQL
-Tools:     Git, VS Code, Figma, Docker
-Cloud:     Railway , Vercel, Render
+Languages: Python, TypeScript, JavaScript, C, C++, SQL, Java, Assembly, MIPS 
+Frontend:  React.js, Next.JS, HTML5, CSS3, Tailwind CSS, Vite 
+Backend:   Django, Django REST Framework, Flask, Celery, Redis, WebSocket 
+Database:  PostgreSQL, SQLite, MySQL, MongoDB 
+Data/ML:   NumPy, Pandas, Matplotlib, scikit-learn, TensorFlow 
+Tools:     Git, GitHub, Docker, Auth0, Swagger, Vercel, Render 
 
 Type 'projects' to see my work!
       `
@@ -86,11 +96,20 @@ Type 'projects' to see my work!
       fn: () => `
 Featured Projects:
 =================
-1. Railway Management System - React + Django + MongoDB + PostgreSQL
-2. Python-Cpp - My custom language which is like python but written in c++
-3. Discord Bot - Custom made bot using Python + Discord API + sqlite3
-4. Portfolio Website - React + Particles.js (this site!)
-5. MewAPI - Python based backend framework
+1. Movies Now - A social movie streaming platform with synchronized playback and real-time video meetings. 
+   Tech: React, Django, Redis, Celery, TypeScript, LiveKit 
+
+2. SJ-Website - A full-stack jewelry e-commerce application with dynamic product catalogs and user profiles. 
+   Tech: React, TypeScript, Tailwind CSS, Django, PostgreSQL, Auth0 
+
+3. Parallax - A domain-specific SIMD/LLVM language with a modular design and detailed tutorials. 
+   Tech: C++, LLVM, MLIR 
+
+4. Fight Club - A multiplayer 2D fighting game with real-time client-server synchronization. 
+   Tech: Python, Pygame, UDP/TCP Sockets 
+
+5. MeowAPI - A minimalist Python web framework supporting function- and class-based routing with middleware. 
+   Tech: Python, WSGI, SQLite, Jinja2
 
 Type 'contact' to get in touch!
       `
@@ -101,17 +120,19 @@ Type 'contact' to get in touch!
       fn: () => `
 Let's Connect:
 =============
-Email     : cse22100@gmail.com
-GitHub    : github.com/anita-maxwynn
+Email     : sourishchandra08@gmail.com
+GitHub-1  : github.com/anita-maxwynn
+GitHub-2  : github.com/sourish0
 X         : x.com/manOf_100
-Portfolio : anitamaxwynn.dev
+Portfolio : anita-maxwynn.vercel.app
 CodeChef  : codechef.com/users/team_tryst_51
-GeeksforGeeks : gfg.com/users/csexxfj46
+GfG       : gfg.com/users/csexxfj46
+LinkedIn  : linkedin.com/in/sourish-chandra-a68b77262 
 
-Available for freelance projects and full-time opportunities!
+Available for internship and research opportunities!
       `,
       funco: () => {
-        navigator.clipboard.writeText('cse22100@gmail.com').then(() => {
+        navigator.clipboard.writeText('sourishchandra08@gmail.com').then(() => {
           console.log('Email copied to clipboard!');
         });
         console.log('Contact information viewed');
@@ -123,7 +144,12 @@ Available for freelance projects and full-time opportunities!
       fn: () => `
 💼 Work Experience:
 ──────────────────
+Research Intern @ Indian Institute of Information Technology, Kalyani (June 2025 - July 2025)
 
+• Worked on the design and implementation of a custom cryptographic signature scheme in C, focusing on efficiency and security. 
+• Developed detailed technical documentation explaining the scheme's mathematical foundation and implementation details.
+• Published the project and documentation on GitHub for reproducibility and accessibility. 
+• Collaborated with peers and mentors to review, test, and refine the proposed scheme. 
       `
     },
     resume: {
@@ -165,41 +191,13 @@ echo       - Echo the input text
 Tip: Just type any command and press Enter!
       `
     },
-    whoami: {
-      description: 'Display current user',
-      usage: 'whoami',
-      fn: () => 'anita.maxwynn'
-    },
-    ls: {
-      description: 'List available sections',
-      usage: 'ls',
-      fn: () => '\nabout \nskills  \nprojects  \nexperience  \ncontact  \nresume'
-    },
-    pwd: {
-      description: 'Print working directory',
-      usage: 'pwd',
-      fn: () => '\n/Visca/El/Barca'
-    },
-    clear: {
-      description: 'Clear the terminal screen',
-      usage: 'clear',
-      fn: () => '\x1b[2J\x1b[H'
-    },
-    clr: {
-      description: 'Clear the terminal screen (alias for clear)',
-      usage: 'clr',
-      fn: () => '\x1b[2J\x1b[H'
-    },
-    cls: {
-      description: 'Clear the terminal screen (Windows-style alias)',
-      usage: 'cls',
-      fn: () => '\x1b[2J\x1b[H'
-    },
-    echo: {
-      description: 'Echo the input text',
-      usage: 'echo <text>',
-      fn: (args = []) => args.length ? '\n'+args.join(' ') : '\nNo text provided',
-    },
+    whoami: { description: 'Display current user', usage: 'whoami', fn: () => `\nsourish.chandra` },
+    ls: { description: 'List available sections', usage: 'ls', fn: () => `\nabout \nskills  \nprojects  \nexperience  \ncontact  \nresume\n` },
+    pwd: { description: 'Print working directory', usage: 'pwd', fn: () => `\n/Visca/ El/ Barca` },
+    clear: { description: 'Clear the terminal screen', usage: 'clear', fn: () => '\x1b[2J\x1b[H' },
+    clr: { description: 'Clear the terminal screen (alias for clear)', usage: 'clr', fn: () => '\x1b[2J\x1b[H' },
+    cls: { description: 'Clear the terminal screen (Windows-style alias)', usage: 'cls', fn: () => '\x1b[2J\x1b[H' },
+    echo: { description: 'Echo the input text', usage: 'echo <text>', fn: (args = []) => args.length ? '\n'+args.join(' ') : '\nNo text provided' },
     hacking: {
       description: '???',
       usage: 'hacking',
@@ -207,45 +205,30 @@ Tip: Just type any command and press Enter!
       funco: () => {
         const overlay = document.getElementById('easteregg-overlay');
         const audio = document.getElementById('hacker-audio') as HTMLAudioElement;
-
         if (overlay && audio) {
           overlay.classList.remove('hidden');
           audio.currentTime = 0;
-          
-          // Add error handling
-          audio.play().catch(err => {
-            console.log('Audio play failed:', err);
-          });
-
-          // Also play the video explicitly
+          audio.play().catch(err => console.log('Audio play failed:', err));
           const video = document.getElementById('hacker-video') as HTMLVideoElement;
-          if (video) {
-            video.play().catch(err => {
-              console.log('Video play failed:', err);
-            });
-          }
-
+          if (video) video.play().catch(err => console.log('Video play failed:', err));
           setTimeout(() => {
             overlay.classList.add('hidden');
             audio.pause();
             if (video) video.pause();
           }, 8000);
-        } else {
-          console.log('Elements not found:', { overlay, audio });
-        }
+        } else console.log('Elements not found:', { overlay, audio });
       }
     }
-
-
   };
 
   return (
-    <div className="w-full overflow-auto bg-black text-white">
+    <div className="w-full overflow-auto bg-black text-white relative">
       <ParticlesBackground>
-        <div className="mx-auto w-full container">
+        <div className="mx-auto p-3 w-full container">
           <div className="flex justify-center py-6">
             <pre className="ascii-bulbhead">{asciiArt}</pre>
           </div>
+
           {/* Hacking Easter Egg Overlay */}
           <div
             id="easteregg-overlay"
@@ -262,7 +245,21 @@ Tip: Just type any command and press Enter!
 
           <audio id="hacker-audio" src="/sounds/hacking.mp3" preload="auto" />
 
-          <TerminalComponent commands={commands1} />
+          <TerminalComponent className="p-10" commands={commands1} />
+
+          {/* Delayed Button */}
+          {showSimpleView && (
+            <a
+              href="https://me-api-frontend.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Want Simpler View??" // Tooltip text on hover
+              className="fixed bottom-4 right-4 px-4 py-2 rounded-lg border transition-colors duration-300 hover:bg-opacity-20 hover:bg-white ${themeStyles[currentTheme].text} ${themeStyles[currentTheme].border}"
+            >
+              Click here
+            </a>
+          )}
+
         </div>
       </ParticlesBackground>
     </div>
