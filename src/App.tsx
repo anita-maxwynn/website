@@ -254,7 +254,7 @@ Tip: Just type any command and press Enter!
               target="_blank"
               rel="noopener noreferrer"
               title="Want Simpler View??" // Tooltip text on hover
-              className="fixed bottom-4 right-4 px-4 py-2 rounded-lg border transition-colors duration-300 hover:bg-opacity-20 hover:bg-white ${themeStyles[currentTheme].text} ${themeStyles[currentTheme].border}"
+              className="fixed bottom-4 right-4 px-4 py-2 rounded-lg border transition-colors duration-300 hover:bg-opacity-20 hover:bg-white hover:text-black ${themeStyles[currentTheme].text} ${themeStyles[currentTheme].border}"
             >
               Click here
             </a>
