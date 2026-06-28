@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 const App = () => {
   const [asciiArt, setAsciiArt] = useState<string>('Kisuke');
-  const [showSimpleView, setShowSimpleView] = useState(false); // Button visibility
   const [currentTheme, setCurrentTheme] = useState<'dark' | 'light' | 'matrix' | 'hacker'>('dark');
 
   const themeStyles: Record<typeof currentTheme, { text: string; border: string }> = {
@@ -54,9 +53,6 @@ const App = () => {
 
     generateAscii();
 
-    // Show button after 1 minute (60000 ms)
-    const timer = setTimeout(() => setShowSimpleView(true), 10000);
-    return () => clearTimeout(timer);
 
   }, []);
 
