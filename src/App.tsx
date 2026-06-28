@@ -488,7 +488,7 @@ Type 'commands' to begin.
 
           <audio id="hacker-audio" src="/sounds/hacking.mp3" preload="auto" />
 
-
+          <TerminalComponent className="p-10" commands={commands1} />
         </div>
       </ParticlesBackground>
     </div>
