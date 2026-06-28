@@ -65,12 +65,16 @@ const App = () => {
       description: 'Learn about me',
       usage: 'about',
       fn: () => `
-Hi! I'm Sourish Chandra
-A Bachelor of Technology in Computer Science and Engineering student at IIIT Kalyani, expecting to graduate in May 2026.
-Passionate about Backend Development, Cryptography, and Algorithms.
-Currently maintaining a CGPA of 8.48.
+Hi! I'm Sourish Chandra.
 
-Type 'skills' to see my technical expertise!
+Software Engineer at ITILITE and a Computer Science graduate from IIIT Kalyani (2026).
+
+I enjoy building distributed backend systems, developer tools, AI-powered automation, and systems software. My interests span Backend Engineering, Distributed Systems, Cryptography, and Applied AI.
+
+Currently exploring Spring Boot, cloud-native architectures, and intelligent agentic systems.
+
+Type 'skills' to see my technical stack.
+
       `,
       funco: () => console.log('About command executed at:', new Date().toISOString())
     },
@@ -82,10 +86,13 @@ Technical Skills:
 ================
 Languages: Python, TypeScript, JavaScript, C, C++, SQL, Java, Assembly, MIPS 
 Frontend:  React.js, Next.JS, HTML5, CSS3, Tailwind CSS, Vite 
-Backend:   Django, Django REST Framework, Flask, Celery, Redis, WebSocket 
+Backend:   Django, Django REST Framework, Flask, Celery, Redis, WebSocket , Springboot, PHP 
 Database:  PostgreSQL, SQLite, MySQL, MongoDB 
 Data/ML:   NumPy, Pandas, Matplotlib, scikit-learn, TensorFlow 
 Tools:     Git, GitHub, Docker, Auth0, Swagger, Vercel, Render 
+Cloud:     Docker • AWS • Linux • Git
+
+Other:     REST APIs • System Design • WebSockets • Background Jobs • Authentication
 
 Type 'projects' to see my work!
       `
@@ -96,20 +103,28 @@ Type 'projects' to see my work!
       fn: () => `
 Featured Projects:
 =================
-1. Movies Now - A social movie streaming platform with synchronized playback and real-time video meetings. 
+
+1. GeoTrack ⭐
+   Secure multi-hop LoRa mesh communication system with encrypted routing and custom forwarding algorithms.
+   Tech: ESP32 • LoRa • Python • React Native • ECC • AES-256
+
+2. Movies Now - A social movie streaming platform with synchronized playback and real-time video meetings. 
    Tech: React, Django, Redis, Celery, TypeScript, LiveKit 
 
-2. SJ-Website - A full-stack jewelry e-commerce application with dynamic product catalogs and user profiles. 
+3. SJ-Website - A full-stack jewelry e-commerce application with dynamic product catalogs and user profiles. 
    Tech: React, TypeScript, Tailwind CSS, Django, PostgreSQL, Auth0 
 
-3. Parallax - A domain-specific SIMD/LLVM language with a modular design and detailed tutorials. 
+4. Parallax - A domain-specific SIMD/LLVM language with a modular design and detailed tutorials. 
    Tech: C++, LLVM, MLIR 
 
-4. Fight Club - A multiplayer 2D fighting game with real-time client-server synchronization. 
+5. Fight Club - A multiplayer 2D fighting game with real-time client-server synchronization. 
    Tech: Python, Pygame, UDP/TCP Sockets 
 
-5. MeowAPI - A minimalist Python web framework supporting function- and class-based routing with middleware. 
+6. MeowAPI - A minimalist Python web framework supporting function- and class-based routing with middleware. 
    Tech: Python, WSGI, SQLite, Jinja2
+
+7. AI Incident Management Agent (In Progress) - Automatically analyzes New Relic alerts, queries CloudWatch, creates Jira tickets and assigns incidents using LLMs.
+   Tech: Python • Gmail API • AWS CloudWatch • New Relic • Jira • OpenAI
 
 Type 'contact' to get in touch!
       `
@@ -144,6 +159,19 @@ Available for internship and research opportunities!
       fn: () => `
 💼 Work Experience:
 ──────────────────
+Software Engineer @ITILITE (June 2026 - Present)
+
+• Building scalable backend services and internal platform features.
+• Working with Django, MySQL and enterprise integrations.
+• Improving platform reliability, automation and security.
+
+Software Engineering Intern @ ITILITE (Jan 2026 - June 2026)
+
+• Developed secure onboarding workflows.
+• Built backend APIs and automation services.
+• Implemented client synchronization pipelines.
+• Fixed production issues and VAPT findings.
+
 Research Intern @ Indian Institute of Information Technology, Kalyani (June 2025 - July 2025)
 
 • Worked on the design and implementation of a custom cryptographic signature scheme in C, focusing on efficiency and security. 
@@ -165,7 +193,7 @@ Resume Download:
 Alternative: Type 'contact' for my email to request a copy!
       `,
       funco: () => {
-        window.open('/resume.pdf', '_blank');
+        window.open('/Sourish_Chandra_v2.pdf', '_blank');
         console.log('Resume download initiated at:', new Date().toISOString());
       }
     },
@@ -197,7 +225,7 @@ Tip: Just type any command and press Enter!
     clear: { description: 'Clear the terminal screen', usage: 'clear', fn: () => '\x1b[2J\x1b[H' },
     clr: { description: 'Clear the terminal screen (alias for clear)', usage: 'clr', fn: () => '\x1b[2J\x1b[H' },
     cls: { description: 'Clear the terminal screen (Windows-style alias)', usage: 'cls', fn: () => '\x1b[2J\x1b[H' },
-    echo: { description: 'Echo the input text', usage: 'echo <text>', fn: (args = []) => args.length ? '\n'+args.join(' ') : '\nNo text provided' },
+    echo: { description: 'Echo the input text', usage: 'echo <text>', fn: (args = []) => args.length ? '\n' + args.join(' ') : '\nNo text provided' },
     hacking: {
       description: '???',
       usage: 'hacking',
@@ -218,7 +246,197 @@ Tip: Just type any command and press Enter!
           }, 8000);
         } else console.log('Elements not found:', { overlay, audio });
       }
-    }
+    },
+
+    stats: {
+      description: 'Display developer statistics',
+      usage: 'stats',
+      fn: () => `
+Developer Statistics
+====================
+
+Role              : Software Engineer
+Experience        : Backend Engineering
+Languages         : Python, Java, TypeScript
+Primary Stack     : Django + MySQL + Redis
+Projects          : 7+
+Coffee            : █████████░ 90%
+Sleep             : ███░░░░░░░ 30%
+Production Bugs   : Survived
+`
+    },
+
+    timeline: {
+      description: 'Career timeline',
+      usage: 'timeline',
+      fn: () => `
+Career Timeline
+===============
+
+2022 ─ Started B.Tech @ IIIT Kalyani
+
+2024 ─ Built multiple full-stack applications
+
+2025 ─ Research Intern
+       IIIT Kalyani
+
+2026 ─ Software Engineering Intern
+       ITILITE
+
+2026 ─ Software Engineer
+       ITILITE
+`
+    },
+
+    stack: {
+      description: 'Current development stack',
+      usage: 'stack',
+      fn: () => `
+Current Stack
+=============
+
+Backend
+-------
+Python
+Java
+Django
+Spring Boot
+
+Database
+--------
+MySQL
+PostgreSQL
+Redis
+
+Cloud
+-----
+Docker
+AWS
+Linux
+
+Frontend
+--------
+React
+TypeScript
+`
+    },
+
+    now: {
+      description: 'Current focus',
+      usage: 'now',
+      fn: () => `
+Currently Working On
+====================
+
+• Spring Boot
+• AI Incident Management Agent
+• Backend System Design
+• Distributed Systems
+• AWS
+
+Learning never stops :)
+`
+    },
+
+    coffee: {
+      description: 'Coffee level',
+      usage: 'coffee',
+      fn: () => `
+Coffee Monitor
+==============
+
+Current Level
+
+█████████░ 90%
+
+Status:
+Ready for another production deployment ☕
+`
+    },
+
+    fortune: {
+      description: 'Random engineering quote',
+      usage: 'fortune',
+      fn: () => {
+        const quotes = [
+          `"Programs must be written for people to read, and only incidentally for machines to execute." - Harold Abelson`,
+          `"First, solve the problem. Then, write the code." - John Johnson`,
+          `"Talk is cheap. Show me the code." - Linus Torvalds`,
+          `"Deleted code is debugged code." - Jeff Sickel`,
+          `"Simplicity is prerequisite for reliability." - Edsger Dijkstra`,
+          `"The best error message is the one that never shows up." - Thomas Fuchs`,
+          `"Weeks of coding can save you hours of planning."`,
+          `"It's not a bug, it's an undocumented feature."`
+        ];
+
+        return `\n${quotes[Math.floor(Math.random() * quotes.length)]}`;
+      }
+    },
+
+    neofetch: {
+      description: 'Display system information',
+      usage: 'neofetch',
+      fn: () => `
+                   sourish@portfolio
+        -----------------------------------
+OS:            HumanOS 22.0 LTS
+Host:          Bengaluru
+Kernel:        Backend Engineer
+Uptime:        Since 2004
+Shell:         zsh
+Editor:        VS Code
+Languages:     Python, Java, TypeScript
+Frameworks:    Django, Spring Boot, React
+Database:      MySQL, PostgreSQL, Redis
+Terminal:      Kisuke-Term
+CPU:           Sleep Deprived
+Memory:        16 GB (Need More)
+GPU:           Coffee
+`
+    },
+
+    matrix: {
+      description: 'Wake up, Neo...',
+      usage: 'matrix',
+      fn: () => `
+Wake up, Neo...
+
+The Matrix has you.
+
+Follow the white rabbit.
+
+...or just deploy to production.
+`
+    },
+
+    sudo: {
+      description: 'Try becoming root',
+      usage: 'sudo',
+      fn: () => `
+[sudo] password for sourish:
+
+Nice try :)
+
+Permission denied.
+`
+    },
+
+    banner: {
+      description: 'Display welcome banner',
+      usage: 'banner',
+      fn: () => `
+██╗  ██╗██╗███████╗██╗   ██╗██╗  ██╗███████╗
+██║ ██╔╝██║██╔════╝██║   ██║██║ ██╔╝██╔════╝
+█████╔╝ ██║███████╗██║   ██║█████╔╝ █████╗
+██╔═██╗ ██║╚════██║██║   ██║██╔═██╗ ██╔══╝
+██║  ██╗██║███████║╚██████╔╝██║  ██╗███████╗
+╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+Software Engineer @ ITILITE
+
+Type 'commands' to begin.
+`
+    },
   };
 
   return (
@@ -245,20 +463,6 @@ Tip: Just type any command and press Enter!
 
           <audio id="hacker-audio" src="/sounds/hacking.mp3" preload="auto" />
 
-          <TerminalComponent className="p-10" commands={commands1} />
-
-          {/* Delayed Button */}
-          {showSimpleView && (
-            <a
-              href="https://me-api-frontend.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Want Simpler View??" // Tooltip text on hover
-              className="fixed bottom-4 right-4 px-4 py-2 rounded-lg border transition-colors duration-300 hover:bg-opacity-20 hover:bg-white hover:text-black ${themeStyles[currentTheme].text} ${themeStyles[currentTheme].border}"
-            >
-              Click here
-            </a>
-          )}
 
         </div>
       </ParticlesBackground>
