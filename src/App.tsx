@@ -201,23 +201,48 @@ Alternative: Type 'contact' for my email to request a copy!
       description: 'Show available commands',
       usage: 'commands',
       fn: () => `
-Available Commands:
+Available Commands
 ==================
-about      - Learn about me
-skills     - View my technical skills
-projects   - See my portfolio projects
-experience - Check my work history
-contact    - Get my contact info
-resume     - Download my resume
-clear      - Clear the terminal screen
-commands   - Show this help message
-whoami     - Display current user
-ls         - List available sections
-pwd        - Print working directory
-theme      - Change terminal theme
-echo       - Echo the input text
-Tip: Just type any command and press Enter!
-      `
+
+Profile
+-------
+about        Learn about me
+skills       View my technical skills
+projects     See my portfolio projects
+experience   Check my work history
+contact      Get my contact information
+resume       Download my resume
+
+Developer
+---------
+stack        View my current tech stack
+stats        Display developer statistics
+timeline     View my career timeline
+now          See what I'm currently working on
+github       View my GitHub profiles
+
+Terminal
+--------
+whoami       Display current user
+ls           List available sections
+pwd          Print working directory
+echo         Echo the input text
+clear        Clear the terminal screen
+clr          Alias for clear
+cls          Windows-style clear
+
+Fun
+---
+coffee       Coffee monitor
+fortune      Random engineering quote
+neofetch     Display system information
+banner       Display startup banner
+matrix       Wake up, Neo...
+sudo         Try becoming root
+hacking      ???
+
+Tip: There are hidden commands ;)
+`
     },
     whoami: { description: 'Display current user', usage: 'whoami', fn: () => `\nsourish.chandra` },
     ls: { description: 'List available sections', usage: 'ls', fn: () => `\nabout \nskills  \nprojects  \nexperience  \ncontact  \nresume\n` },
